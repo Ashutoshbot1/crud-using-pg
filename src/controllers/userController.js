@@ -67,7 +67,7 @@ export const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await deleteUserService(id);
-    if (!result) {
+    if (result.length === 0) {
       return handleResponse(res, 404, "User not found");
     }
     return handleResponse(res, 200, "User deleted successfully", result);
