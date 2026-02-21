@@ -1,8 +1,9 @@
 import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
-
-dotenv.config();
+import pool from "./config/db.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,6 +11,17 @@ const port = process.env.PORT || 3000;
 //Middlewares
 app.use(express.json());
 app.use(cors());
+
+// Testing postgres connection
+app.get("/", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT current_database()");
+    res.send(`Database name is: ${result.rows[0].current_database}`);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Error connecting to database");
+  }
+});
 
 // Server running
 app.listen(port, () => {
