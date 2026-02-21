@@ -33,7 +33,7 @@ export const getUserByIDService = async (id) => {
 export const updateUserService = async (id, name, email, password) => {
   try {
     const result = await pool.query(
-      "UPDATE users SET VALUES (name = $1, email = $2, password = $3) WHERE id = $4 RETURNING *",
+      "UPDATE users SET name = $1, email = $2, password = $3 WHERE id = $4 RETURNING *",
       [name, email, password, id],
     );
     return result.rows[0];
@@ -44,7 +44,10 @@ export const updateUserService = async (id, name, email, password) => {
 
 export const deleteUserService = async (id) => {
   try {
-    const result = await pool.query("DELETE FROM users WHERE id=$1", [id]);
+    const result = await pool.query(
+      "DELETE FROM users WHERE id=$1 RETURNING *",
+      [id],
+    );
     return result.rows;
   } catch (err) {
     throw err;
