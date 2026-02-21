@@ -1,0 +1,37 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "description": "simple cruds using posgress express node",
+  "keywords": [
+    "crud",
+    "postgress",
+    "express",
+    "node"
+  ],
+  "homepage": "https://github.com/Ashutoshbot1/simple-crud-with-postgress#readme",
+  "bugs": {
+    "url": "https://github.com/Ashutoshbot1/simple-crud-with-postgress/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashutoshbot1/simple-crud-with-postgress.git"
+  },
+  "license": "ISC",
+  "author": "ashutpsh singh",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "joi": "^18.0.2",
+    "pg": "^8.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
